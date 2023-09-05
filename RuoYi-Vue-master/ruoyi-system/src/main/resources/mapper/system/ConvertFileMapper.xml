@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.ConvertFileMapper">
+
+    <resultMap type="ConvertFile" id="ConvertFileResult">
+        <id     property="fileId"      column="file_id"      />
+        <result property="originalFilePath"     column="original_file_path"     />
+        <result property="processedFilePath"   column="processed_file_path"   />
+        <result property="createTime"    column="create_time"    />
+    </resultMap>
+
+    <sql id="selectSysFileSavingVo">
+        select file_id, original_file_path, processed_file_path, create_time
+        from sys_file_saving
+    </sql>
+
+    <select id="queryConvertFileList" resultType="ConvertFile">
+        <include refid="selectSysFileSavingVo"/>
+    </select>
+    <select id="selectConvertFileByFileId" resultType="ConvertFile">
+        <include refid="selectSysFileSavingVo"/>
+        where file_id = #{fileId}
+    </select>
+
+    <insert id="addConvertFile" useGeneratedKeys="true" keyProperty="fileId" keyColumn="file_id">
+        insert into sys_file_saving (
+            <if test="originalFilePath != null and originalFilePath != '' ">original_file_path,</if>
+            <if test="processedFilePath != null and processedFilePath != '' ">processed_file_path,</if>
+            create_time
+        )values(
+        <if test="originalFilePath != null and originalFilePath != ''">#{originalFilePath},</if>
+        <if test="processedFilePath != null and processedFilePath != ''">#{processedFilePath},</if>
+            sysdate()
+        )
+    </insert>
+
+    <update id="updateConvertFile">
+        update sys_file_saving set
+        <set>
+            <if test="originalFilePath != null and originalFilePath != '' ">original_file_path = #{originalFilePath},</if>
+            <if test="processedFilePath != null and processedFilePath != '' ">processed_file_path = #{processedFilePath}</if>
+        </set>
+        where file_id = #{fileId}
+    </update>
+
+    <delete id="deleteConvertFile">
+        delete from sys_file_saving where file_id = #{fileId}
+    </delete>
+
+    <delete id="deleteConvertFiles" parameterType="Long">
+        delete from sys_file_saving where file_id in
+        <foreach item="fileId" collection="array" open="(" separator="," close=")">
+            #{fileId}
+        </foreach>
+    </delete>
+</mapper>

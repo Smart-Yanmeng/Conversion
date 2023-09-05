@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>ruoyi</artifactId>
+        <groupId>com.ruoyi</groupId>
+        <version>3.8.6</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ruoyi-system</artifactId>
+
+    <description>
+        system系统模块
+    </description>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.28</version> <!-- 或者你所需的版本号 -->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.3.29</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.aspose.cells</groupId>
+            <artifactId>aspose-cells</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/aspose-cells-8.5.2.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.aspose.pdf</groupId>
+            <artifactId>aspose-pdf</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/aspose-pdf-22.7.1-jdk16.cracked.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>com.aspose.slides</groupId>
+            <artifactId>aspose-slides</artifactId>
+            <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${pom.basedir}/src/main/resources/lib/lib.aspose.slides-19.3.jar</systemPath>
+        </dependency>
+
+        <!-- 不使用 aspose-words方式可不引用 -->
+        <dependency>
+            <groupId>com.luhuiguo</groupId>
+            <artifactId>aspose-words</artifactId>
+            <version>23.1</version>
+        </dependency>
+        <!--  poi -->
+<!--        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.2</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-scratchpad</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-excelant</artifactId>
+            <version>5.2.0</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>poi-ooxml</artifactId>
+                    <groupId>org.apache.poi</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- itextpdf -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.5.13.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-asian</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.6.0</version>
+        </dependency>
+        <!-- 通用工具-->
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-common</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>cn.hutool</groupId>
+                    <artifactId>hutool-all</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.poi</groupId>
+                    <artifactId>poi-ooxml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>poi</artifactId>
+                    <groupId>org.apache.poi</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ruoyi</groupId>
+            <artifactId>ruoyi-quartz</artifactId>
+        </dependency>
+        <!--png转文字-->
+        <dependency>
+            <groupId>net.sourceforge.tess4j</groupId>
+            <artifactId>tess4j</artifactId>
+            <version>4.5.4</version>
+        </dependency>
+    </dependencies>
+
+</project>
